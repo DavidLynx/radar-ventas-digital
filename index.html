@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Radar de Ventas Digital™ — Detecta fugas de ventas y obtén un plan de 7 y 15 días para crecer con orden." />
+    <title>Radar de Ventas Digital™</title>
+
+    <!-- Tipografía (ligera y moderna). Si prefieres 100% offline, la quitamos luego. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <!-- Background effects -->
+    <div class="bg">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--a"></div>
+        <div class="bg-glow bg-glow--b"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- Top bar -->
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <a class="brand" href="#inicio" aria-label="Ir al inicio">
+                <span class="brand__mark" aria-hidden="true">◉</span>
+                <span class="brand__text">Radar de Ventas Digital<span class="tm">™</span></span>
+            </a>
+
+            <nav class="nav" aria-label="Navegación">
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#radar">Radar</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="topbar__actions">
+                <a class="btn btn--ghost" href="#radar">Iniciar diagnóstico</a>
+                <a class="btn btn--gold" id="cta-whatsapp-top" href="#cta">Agendar Premium</a>
+            </div>
+
+            <button class="hamburger" id="btn-menu" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu" hidden>
+            <div class="container mobile-menu__inner">
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#radar">Radar</a>
+                <a href="#faq">FAQ</a>
+                <a class="btn btn--ghost" href="#radar">Iniciar diagnóstico</a>
+                <a class="btn btn--gold" href="#cta">Agendar Premium</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <main id="inicio" class="hero">
+        <div class="container hero__grid">
+            <section class="hero__copy">
+                <div class="pill">
+                    <span class="pill__dot" aria-hidden="true"></span>
+                    <span>Diagnóstico rápido • Plan 7 y 15 días • Sin humo</span>
+                </div>
+
+                <h1>
+                    Detecta <span class="gold">fugas de ventas</span> y ordena tu crecimiento digital.
+                </h1>
+
+                <p class="hero__lead">
+                    Responde 24 preguntas inteligentes y obtén un <strong>score 0–100</strong>,
+                    un análisis por dimensiones y un plan claro para vender más con operación y métricas.
+                </p>
+
+                <div class="hero__badges" aria-label="Compatibilidad">
+                    <span class="badge">Shopify</span>
+                    <span class="badge">WooCommerce</span>
+                    <span class="badge">Instagram + WhatsApp</span>
+                    <span class="badge">MercadoLibre</span>
+                    <span class="badge">Agencias / Servicios Digitales</span>
+                </div>
+
+                <div class="hero__actions">
+                    <a class="btn btn--gold btn--lg" href="#radar" id="btn-start">Iniciar diagnóstico</a>
+                    <a class="btn btn--ghost btn--lg" href="#como-funciona">Ver cómo funciona</a>
+                </div>
+
+                <div class="hero__trust">
+                    <div class="trustcard">
+                        <div class="trustcard__title">Salida clara</div>
+                        <div class="trustcard__text">Top 3 fugas + plan 7 y 15 días</div>
+                    </div>
+                    <div class="trustcard">
+                        <div class="trustcard__title">Tono cercano</div>
+                        <div class="trustcard__text">Explicaciones completas, no frases vacías</div>
+                    </div>
+                    <div class="trustcard">
+                        <div class="trustcard__title">Premium</div>
+                        <div class="trustcard__text">Plan 30 días desbloqueable</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="hero__panel" aria-label="Panel de vista previa">
+                <div class="panel">
+                    <div class="panel__top">
+                        <div class="panel__title">Vista previa</div>
+                        <div class="panel__chips">
+                            <span class="chip chip--live">Live</span>
+                            <span class="chip">0–100</span>
+                            <span class="chip">Radar</span>
+                        </div>
+                    </div>
+
+                    <div class="panel__score">
+                        <div class="scorebox">
+                            <div class="scorebox__label">Score total</div>
+                            <div class="scorebox__value"><span id="preview-score">—</span></div>
+                            <div class="scorebox__hint">Se calcula al final</div>
+                        </div>
+                        <div class="scorebox">
+                            <div class="scorebox__label">Nivel</div>
+                            <div class="scorebox__value"><span id="preview-level">—</span></div>
+                            <div class="scorebox__hint">Emergente → Escalable</div>
+                        </div>
+                    </div>
+
+                    <div class="panel__radar">
+                        <div class="radar-placeholder" role="img" aria-label="Radar (se activará con gráfico)">
+                            <div class="radar-ring"></div>
+                            <div class="radar-ring"></div>
+                            <div class="radar-ring"></div>
+                            <div class="radar-sweep" aria-hidden="true"></div>
+
+                            <div class="radar-labels" aria-hidden="true">
+                                <span>Oferta</span>
+                                <span>Tráfico</span>
+                                <span>Conversión</span>
+                                <span>Retención</span>
+                                <span>Operación</span>
+                                <span>Métricas</span>
+                            </div>
+
+                            <div class="radar-note">
+                                <span class="dot"></span> El gráfico real se activa abajo al calcular (Chart).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel__mini">
+                        <div class="mini">
+                            <div class="mini__k">Prioridad #1</div>
+                            <div class="mini__v" id="preview-priority-1">—</div>
+                        </div>
+                        <div class="mini">
+                            <div class="mini__k">Prioridad #2</div>
+                            <div class="mini__v" id="preview-priority-2">—</div>
+                        </div>
+                        <div class="mini">
+                            <div class="mini__k">Prioridad #3</div>
+                            <div class="mini__v" id="preview-priority-3">—</div>
+                        </div>
+                    </div>
+
+                    <div class="panel__footer">
+                        <div class="hint">
+                            <span class="hint__icon" aria-hidden="true">✦</span>
+                            <span>Hecho para e-commerce y agencias: vender más sin fugas.</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- How it works -->
+    <section id="como-funciona" class="section">
+        <div class="container">
+            <header class="section__head">
+                <h2>Cómo funciona</h2>
+                <p class="muted">
+                    El Radar no te “califica” por marketing fancy. Te muestra fugas reales:
+                    lo que está frenando ventas, confianza, operación y control.
+                </p>
+            </header>
+
+            <div class="steps">
+                <article class="card">
+                    <div class="card__icon" aria-hidden="true">1</div>
+                    <h3>Elige tu ruta</h3>
+                    <p>
+                        <strong>E-commerce</strong> (productos físicos) o <strong>Servicios Digitales</strong> (agencia / multimedia).
+                        Ajustamos el lenguaje y las recomendaciones.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="card__icon" aria-hidden="true">2</div>
+                    <h3>Responde 24 preguntas</h3>
+                    <p>
+                        Preguntas cortas, concretas y con intención. Algunas son “rimbombantes” a propósito:
+                        te obligan a ver el sistema, no solo el deseo de vender.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="card__icon" aria-hidden="true">3</div>
+                    <h3>Recibe Score + Plan</h3>
+                    <p>
+                        Score total <strong>0–100</strong>, radar por dimensiones, top 3 fugas y plan de acción
+                        <strong>7 y 15 días</strong>. El plan 30 días queda como premium.
+                    </p>
+                </article>
+
+                <article class="card card--gold">
+                    <div class="card__icon" aria-hidden="true">✦</div>
+                    <h3>Diagnóstico Premium</h3>
+                    <p>
+                        Si quieres, lo convertimos en implementación: medición, embudo, automatización, propuesta comercial y tablero.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostic app -->
+    <section id="radar" class="section section--app">
+        <div class="container">
+            <header class="section__head section__head--split">
+                <div>
+                    <h2>Radar</h2>
+                    <p class="muted">
+                        Responde honestamente. Si “suena fuerte”, es porque el negocio se vuelve fuerte cuando soporta presión.
+                    </p>
+                </div>
+
+                <div class="progress">
+                    <div class="progress__meta">
+                        <span id="progress-text">0% completado</span>
+                        <span class="muted" id="questions-left">24 preguntas</span>
+                    </div>
+                    <div class="progress__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="progress__fill" id="progress-fill" style="width:0%"></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Route selector -->
+            <div class="route">
+                <div class="route__title">Selecciona tu ruta</div>
+
+                <div class="route__choices" role="tablist" aria-label="Rutas">
+                    <button class="routebtn is-active" id="route-ecom" role="tab" aria-selected="true">
+                        <span class="routebtn__title">E-commerce</span>
+                        <span class="routebtn__desc">Productos físicos • Shopify/Woo/MercadoLibre</span>
+                    </button>
+
+                    <button class="routebtn" id="route-services" role="tab" aria-selected="false">
+                        <span class="routebtn__title">Servicios digitales</span>
+                        <span class="routebtn__desc">Agencias • Multimedia • Contenido</span>
+                    </button>
+                </div>
+
+                <div class="route__hint">
+                    <span class="dot"></span>
+                    <span>El Radar ajustará algunas preguntas y ejemplos según tu ruta.</span>
+                </div>
+            </div>
+
+            <!-- Questions -->
+            <form class="quiz" id="quiz" aria-label="Formulario del diagnóstico">
+                <!-- Dim 1 -->
+                <section class="qblock" data-dim="oferta">
+                    <header class="qblock__head">
+                        <h3>1) Oferta & Claridad <span class="tag">10%</span></h3>
+                        <p class="muted">Si no es claro, no vende. Si es claro pero no distinto, compite por precio.</p>
+                    </header>
+
+                    <div class="qgrid">
+                        <article class="qcard" data-q="q1">
+                            <div class="qcard__top">
+                                <div class="qnum">1</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">En 10 segundos, ¿se entiende qué vendes, para quién y por qué elegirte?</div>
+                                    <div class="qsub">Piensa en alguien con afán. ¿Lo capta o se pierde?</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 1">
+                                <label><input type="radio" name="q1" value="1">1</label>
+                                <label><input type="radio" name="q1" value="2">2</label>
+                                <label><input type="radio" name="q1" value="3">3</label>
+                                <label><input type="radio" name="q1" value="4">4</label>
+                                <label><input type="radio" name="q1" value="5">5</label>
+                            </div>
+                            <div class="qhint">1 = confuso • 5 = cristalino</div>
+                        </article>
+
+                        <article class="qcard" data-q="q2">
+                            <div class="qcard__top">
+                                <div class="qnum">2</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tus precios o rangos están visibles antes de tener que escribirte?</div>
+                                    <div class="qsub">Ocultar precio suele bajar conversión o atraer leads no calificados.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q2" value="5">Sí, claro</label>
+                                <label class="pillchoice"><input type="radio" name="q2" value="3">Parcial</label>
+                                <label class="pillchoice"><input type="radio" name="q2" value="1">No</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q3">
+                            <div class="qcard__top">
+                                <div class="qnum">3</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tus precios o rangos están visibles antes de tener que escribirte?</div>
+                                    <div class="qsub">“Calidad y buen servicio” no cuenta como diferencia.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 3">
+                                <label><input type="radio" name="q3" value="1">1</label>
+                                <label><input type="radio" name="q3" value="2">2</label>
+                                <label><input type="radio" name="q3" value="3">3</label>
+                                <label><input type="radio" name="q3" value="4">4</label>
+                                <label><input type="radio" name="q3" value="5">5</label>
+                            </div>
+                            <div class="qhint">1 = igual a todos • 5 = único</div>
+                        </article>
+
+                        <article class="qcard" data-q="q4">
+                            <div class="qcard__top">
+                                <div class="qnum">4</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">Si te preguntan “¿por qué comprarte a ti?”, ¿tienes una respuesta concreta?</div>
+                                    <div class="qsub">Una frase corta + 2 pruebas (casos, métricas, resultados).</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 4">
+                                <label><input type="radio" name="q4" value="1">1</label>
+                                <label><input type="radio" name="q4" value="2">2</label>
+                                <label><input type="radio" name="q4" value="3">3</label>
+                                <label><input type="radio" name="q4" value="4">4</label>
+                                <label><input type="radio" name="q4" value="5">5</label>
+                            </div>
+                            <div class="qhint">1 = improviso • 5 = sólido</div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Dim 2 -->
+                <section class="qblock" data-dim="trafico">
+                    <header class="qblock__head">
+                        <h3>2) Tráfico & Adquisición <span class="tag">20%</span></h3>
+                        <p class="muted">Si tu tráfico depende del azar, tu caja depende del azar.</p>
+                    </header>
+
+                    <div class="qgrid">
+                        <article class="qcard" data-q="q5">
+                            <div class="qcard__top">
+                                <div class="qnum">5</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes un canal principal que genera ≥60% de tus ventas/leads?</div>
+                                    <div class="qsub">Un canal fuerte = previsibilidad. Muchos canales débiles = ruido.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q5" value="5">Sí</label>
+                                <label class="pillchoice"><input type="radio" name="q5" value="3">Parcial</label>
+                                <label class="pillchoice"><input type="radio" name="q5" value="1">No</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q6">
+                            <div class="qcard__top">
+                                <div class="qnum">6</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Publicas mínimo 2 veces por semana con intención estratégica?</div>
+                                    <div class="qsub">No es “subir por subir”: es atraer, educar o convertir.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 6">
+                                <label><input type="radio" name="q6" value="1">1</label>
+                                <label><input type="radio" name="q6" value="2">2</label>
+                                <label><input type="radio" name="q6" value="3">3</label>
+                                <label><input type="radio" name="q6" value="4">4</label>
+                                <label><input type="radio" name="q6" value="5">5</label>
+                            </div>
+                            <div class="qhint">1 = casi nunca • 5 = siempre</div>
+                        </article>
+
+                        <article class="qcard" data-q="q7">
+                            <div class="qcard__top">
+                                <div class="qnum">7</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">Si haces publicidad, ¿mides resultados más allá de likes?</div>
+                                    <div class="qsub">Ventas/leads, costo, retorno, tasa de conversión.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 7">
+                                <label><input type="radio" name="q7" value="1">1</label>
+                                <label><input type="radio" name="q7" value="2">2</label>
+                                <label><input type="radio" name="q7" value="3">3</label>
+                                <label><input type="radio" name="q7" value="4">4</label>
+                                <label><input type="radio" name="q7" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q8">
+                            <div class="qcard__top">
+                                <div class="qnum">8</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes un mecanismo de captura de leads estructurado?</div>
+                                    <div class="qsub">WhatsApp claro, formulario, landing, DM con palabra clave, etc.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q8" value="5">Sí, estructurado</label>
+                                <label class="pillchoice"><input type="radio" name="q8" value="3">Básico</label>
+                                <label class="pillchoice"><input type="radio" name="q8" value="1">No</label>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Dim 3 -->
+                <section class="qblock" data-dim="conversion">
+                    <header class="qblock__head">
+                        <h3>3) Conversión & Confianza <span class="tag">25%</span></h3>
+                        <p class="muted">Aquí se gana o se pierde dinero. La confianza convierte.</p>
+                    </header>
+
+                    <div class="qgrid">
+                        <article class="qcard" data-q="q9">
+                            <div class="qcard__top">
+                                <div class="qnum">9</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes testimonios/casos reales visibles en tus canales?</div>
+                                    <div class="qsub">Si no hay prueba, el cliente asume riesgo.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 9">
+                                <label><input type="radio" name="q9" value="1">1</label>
+                                <label><input type="radio" name="q9" value="2">2</label>
+                                <label><input type="radio" name="q9" value="3">3</label>
+                                <label><input type="radio" name="q9" value="4">4</label>
+                                <label><input type="radio" name="q9" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q10">
+                            <div class="qcard__top">
+                                <div class="qnum">10</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Qué tan rápido respondes a un lead en horario laboral?</div>
+                                    <div class="qsub">La velocidad es parte de la confianza. Y de la conversión.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q10" value="5">&lt; 15 min</label>
+                                <label class="pillchoice"><input type="radio" name="q10" value="4">&lt; 1 hora</label>
+                                <label class="pillchoice"><input type="radio" name="q10" value="3">1–3 horas</label>
+                                <label class="pillchoice"><input type="radio" name="q10" value="2">&gt; 3 horas</label>
+                                <label class="pillchoice"><input type="radio" name="q10" value="1">No definido</label>
+                            </div>
+                            <div class="qhint qhint--warn" id="flag-q10">Bandera roja si es “&gt;3h” o “No definido”.</div>
+                        </article>
+
+                        <article class="qcard" data-q="q11">
+                            <div class="qcard__top">
+                                <div class="qnum">11</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tus métodos de pago/contratación son claros y simples?</div>
+                                    <div class="qsub">Fricción = abandono. Claridad = cierre.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 11">
+                                <label><input type="radio" name="q11" value="1">1</label>
+                                <label><input type="radio" name="q11" value="2">2</label>
+                                <label><input type="radio" name="q11" value="3">3</label>
+                                <label><input type="radio" name="q11" value="4">4</label>
+                                <label><input type="radio" name="q11" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q12">
+                            <div class="qcard__top">
+                                <div class="qnum">12</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes políticas/condiciones claras (envíos, devoluciones, alcance)?</div>
+                                    <div class="qsub">Esto baja objeciones y evita conflictos.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 12">
+                                <label><input type="radio" name="q12" value="1">1</label>
+                                <label><input type="radio" name="q12" value="2">2</label>
+                                <label><input type="radio" name="q12" value="3">3</label>
+                                <label><input type="radio" name="q12" value="4">4</label>
+                                <label><input type="radio" name="q12" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard qcard--special" data-q="q13">
+                            <div class="qcard__top">
+                                <div class="qnum">13</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">Pregunta incómoda (pero real): ¿tu proceso tiene pasos innecesarios?</div>
+                                    <div class="qsub">
+                                        Si el cliente siente fricción, no “se queja”: simplemente se va.
+                                        ¿Tienes más de 3 pasos que no aportan valor?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q13" value="1">Sí, hay fricción</label>
+                                <label class="pillchoice"><input type="radio" name="q13" value="5">No, es fluido</label>
+                            </div>
+                            <div class="qhint qhint--warn" id="flag-q13">Bandera roja si respondes “Sí, hay fricción”.</div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Dim 4 -->
+                <section class="qblock" data-dim="retencion">
+                    <header class="qblock__head">
+                        <h3>4) Retención & Experiencia <span class="tag">10%</span></h3>
+                        <p class="muted">Crecer sin retención es llenar un balde roto.</p>
+                    </header>
+
+                    <div class="qgrid">
+                        <article class="qcard" data-q="q14">
+                            <div class="qcard__top">
+                                <div class="qnum">14</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Haces seguimiento después de la venta/proyecto?</div>
+                                    <div class="qsub">Postventa = confianza + recompra + referidos.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 14">
+                                <label><input type="radio" name="q14" value="1">1</label>
+                                <label><input type="radio" name="q14" value="2">2</label>
+                                <label><input type="radio" name="q14" value="3">3</label>
+                                <label><input type="radio" name="q14" value="4">4</label>
+                                <label><input type="radio" name="q14" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q15">
+                            <div class="qcard__top">
+                                <div class="qnum">15</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes upsell/recompra estructurados (no improvisados)?</div>
+                                    <div class="qsub">Paquetes, mantenimiento, bundles, retainer, reposición, etc.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 15">
+                                <label><input type="radio" name="q15" value="1">1</label>
+                                <label><input type="radio" name="q15" value="2">2</label>
+                                <label><input type="radio" name="q15" value="3">3</label>
+                                <label><input type="radio" name="q15" value="4">4</label>
+                                <label><input type="radio" name="q15" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q16">
+                            <div class="qcard__top">
+                                <div class="qnum">16</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes base de datos organizada de clientes anteriores?</div>
+                                    <div class="qsub">Si no puedes recontactar, pierdes el “dinero fácil”.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q16" value="5">Sí, organizada</label>
+                                <label class="pillchoice"><input type="radio" name="q16" value="3">Parcial</label>
+                                <label class="pillchoice"><input type="radio" name="q16" value="1">No</label>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Dim 5 -->
+                <section class="qblock" data-dim="operacion">
+                    <header class="qblock__head">
+                        <h3>5) Operación & Entrega <span class="tag">15%</span></h3>
+                        <p class="muted">Vender más sin operación es un accidente anunciado.</p>
+                    </header>
+
+                    <div class="qgrid">
+                        <article class="qcard" data-q="q17">
+                            <div class="qcard__top">
+                                <div class="qnum">17</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes tiempos de entrega definidos y los cumples 90%+?</div>
+                                    <div class="qsub">La inconsistencia mata reputación (y caja).</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 17">
+                                <label><input type="radio" name="q17" value="1">1</label>
+                                <label><input type="radio" name="q17" value="2">2</label>
+                                <label><input type="radio" name="q17" value="3">3</label>
+                                <label><input type="radio" name="q17" value="4">4</label>
+                                <label><input type="radio" name="q17" value="5">5</label>
+                            </div>
+                            <div class="qhint qhint--warn" id="flag-q17">Bandera roja si ≤ 2.</div>
+                        </article>
+
+                        <article class="qcard" data-q="q18">
+                            <div class="qcard__top">
+                                <div class="qnum">18</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes proceso interno (SOP) para pedidos/proyectos?</div>
+                                    <div class="qsub">Sin SOP: todo depende de tu energía del día.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q18" value="5">Sí</label>
+                                <label class="pillchoice"><input type="radio" name="q18" value="3">Parcial</label>
+                                <label class="pillchoice"><input type="radio" name="q18" value="1">No</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q19">
+                            <div class="qcard__top">
+                                <div class="qnum">19</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes control de inventario/carga operativa sin “sorpresas” semanales?</div>
+                                    <div class="qsub">Sorpresas = pérdidas ocultas.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 19">
+                                <label><input type="radio" name="q19" value="1">1</label>
+                                <label><input type="radio" name="q19" value="2">2</label>
+                                <label><input type="radio" name="q19" value="3">3</label>
+                                <label><input type="radio" name="q19" value="4">4</label>
+                                <label><input type="radio" name="q19" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard qcard--special" data-q="q20">
+                            <div class="qcard__top">
+                                <div class="qnum">20</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">La pregunta rimbombante: si mañana duplicas ventas/leads… ¿colapsas o respondes con orden?</div>
+                                    <div class="qsub">
+                                        No se trata de “querer vender más”. Se trata de si tu sistema lo soporta sin sacrificar calidad.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 20">
+                                <label><input type="radio" name="q20" value="1">1</label>
+                                <label><input type="radio" name="q20" value="2">2</label>
+                                <label><input type="radio" name="q20" value="3">3</label>
+                                <label><input type="radio" name="q20" value="4">4</label>
+                                <label><input type="radio" name="q20" value="5">5</label>
+                            </div>
+                            <div class="qhint">1 = colapso • 5 = orden</div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Dim 6 -->
+                <section class="qblock" data-dim="metricas">
+                    <header class="qblock__head">
+                        <h3>6) Métricas & Control <span class="tag">20%</span></h3>
+                        <p class="muted">Sin números, no hay control. Sin control, hay fugas.</p>
+                    </header>
+
+                    <div class="qgrid">
+                        <article class="qcard" data-q="q21">
+                            <div class="qcard__top">
+                                <div class="qnum">21</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Conoces tu margen promedio por producto/servicio?</div>
+                                    <div class="qsub">No “más o menos”: ¿lo puedes explicar con números?</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q21" value="5">Sí, exacto</label>
+                                <label class="pillchoice"><input type="radio" name="q21" value="3">Aproximado</label>
+                                <label class="pillchoice"><input type="radio" name="q21" value="1">No</label>
+                            </div>
+                            <div class="qhint qhint--warn" id="flag-q21">Bandera roja si “No”.</div>
+                        </article>
+
+                        <article class="qcard" data-q="q22">
+                            <div class="qcard__top">
+                                <div class="qnum">22</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Sabes cuánto gastas en adquisición y cuánto retorna?</div>
+                                    <div class="qsub">CAC/ROAS aproximado. Si no lo miras, pagas por “esperanza”.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 22">
+                                <label><input type="radio" name="q22" value="1">1</label>
+                                <label><input type="radio" name="q22" value="2">2</label>
+                                <label><input type="radio" name="q22" value="3">3</label>
+                                <label><input type="radio" name="q22" value="4">4</label>
+                                <label><input type="radio" name="q22" value="5">5</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q23">
+                            <div class="qcard__top">
+                                <div class="qnum">23</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tienes tablero mínimo semanal (ventas, leads, costos)?</div>
+                                    <div class="qsub">Puede ser simple: una hoja y disciplina.</div>
+                                </div>
+                            </div>
+                            <div class="choice">
+                                <label class="pillchoice"><input type="radio" name="q23" value="5">Sí</label>
+                                <label class="pillchoice"><input type="radio" name="q23" value="3">Parcial</label>
+                                <label class="pillchoice"><input type="radio" name="q23" value="1">No</label>
+                            </div>
+                        </article>
+
+                        <article class="qcard" data-q="q24">
+                            <div class="qcard__top">
+                                <div class="qnum">24</div>
+                                <div class="qmeta">
+                                    <div class="qtitle">¿Tomas decisiones con datos y no solo con intuición?</div>
+                                    <div class="qsub">La intuición sin medición es una apuesta.</div>
+                                </div>
+                            </div>
+                            <div class="scale" role="radiogroup" aria-label="Pregunta 24">
+                                <label><input type="radio" name="q24" value="1">1</label>
+                                <label><input type="radio" name="q24" value="2">2</label>
+                                <label><input type="radio" name="q24" value="3">3</label>
+                                <label><input type="radio" name="q24" value="4">4</label>
+                                <label><input type="radio" name="q24" value="5">5</label>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Actions -->
+                <div class="quiz__actions">
+                    <button type="button" class="btn btn--ghost" id="btn-reset">Reiniciar</button>
+                    <button type="button" class="btn btn--gold" id="btn-calc">Calcular diagnóstico</button>
+                </div>
+
+                <div class="quiz__note muted">
+                    Nota: El cálculo y los textos del diagnóstico se activan con JavaScript.
+                </div>
+            </form>
+
+            <!-- Results -->
+            <section class="results" id="results" aria-label="Resultados del diagnóstico" hidden>
+                <div class="results__top">
+                    <div class="results__headline">
+                        <h3>Tu diagnóstico</h3>
+                        <p class="muted">Explicación completa, cercana y profesional. Sin frases vacías.</p>
+                    </div>
+
+                    <div class="results__summary">
+                        <div class="kpi">
+                            <div class="kpi__label">Score total</div>
+                            <div class="kpi__value" id="score-total">—</div>
+                            <div class="kpi__hint" id="score-level">Nivel: —</div>
+                        </div>
+
+                        <div class="kpi">
+                            <div class="kpi__label">Banderas rojas</div>
+                            <div class="kpi__value" id="flags-count">—</div>
+                            <div class="kpi__hint">Penalización inteligente</div>
+                        </div>
+
+                        <div class="kpi">
+                            <div class="kpi__label">Fuga #1</div>
+                            <div class="kpi__value" id="prio-1">—</div>
+                            <div class="kpi__hint">Impacto alto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results__grid">
+                    <article class="card">
+                        <h4>Lectura general</h4>
+                        <p id="diag-general" class="resulttext">—</p>
+                    </article>
+
+                    <article class="card">
+                        <h4>Radar por dimensión</h4>
+                        <div class="chartbox">
+                            <!-- ✅ AQUI VA EL CANVAS REAL -->
+                            <div class="chartbox__canvas">
+                                <canvas id="radarChart" aria-label="Gráfico radar de scores" role="img"></canvas>
+                            </div>
+
+                            <div class="scores-mini" aria-label="Scores por dimensión">
+                                <div><span>Oferta</span><strong id="s-oferta">—</strong></div>
+                                <div><span>Tráfico</span><strong id="s-trafico">—</strong></div>
+                                <div><span>Conversión</span><strong id="s-conversion">—</strong></div>
+                                <div><span>Retención</span><strong id="s-retencion">—</strong></div>
+                                <div><span>Operación</span><strong id="s-operacion">—</strong></div>
+                                <div><span>Métricas</span><strong id="s-metricas">—</strong></div>
+                            </div>
+
+                            <div class="muted tiny" style="margin-top:10px;">
+                                El gráfico se actualiza automáticamente al calcular (Chart.js).
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h4>Top 3 fugas (prioridades)</h4>
+                        <ol class="prio">
+                            <li>
+                                <div class="prio__title" id="prio-title-1">—</div>
+                                <div class="prio__text" id="prio-text-1">—</div>
+                            </li>
+                            <li>
+                                <div class="prio__title" id="prio-title-2">—</div>
+                                <div class="prio__text" id="prio-text-2">—</div>
+                            </li>
+                            <li>
+                                <div class="prio__title" id="prio-title-3">—</div>
+                                <div class="prio__text" id="prio-text-3">—</div>
+                            </li>
+                        </ol>
+                    </article>
+
+                    <article class="card card--wide">
+                        <h4>Plan de 7 días</h4>
+                        <div class="plan" id="plan-7">—</div>
+                    </article>
+
+                    <article class="card card--wide">
+                        <h4>Plan de 15 días</h4>
+                        <div class="plan" id="plan-15">—</div>
+                    </article>
+
+                    <article class="card card--wide card--locked">
+                        <div class="locked">
+                            <div class="locked__left">
+                                <h4>Plan de 30 días (Premium)</h4>
+                                <p class="muted">
+                                    Vista previa: optimización de embudo + tablero completo + automatización + proyección.
+                                    Desbloquea con un diagnóstico asistido.
+                                </p>
+                                <ul class="bullets">
+                                    <li>Implementación de medición y tablero semanal</li>
+                                    <li>Optimización del embudo y oferta</li>
+                                    <li>Automatización básica (WhatsApp / seguimiento)</li>
+                                    <li>Plan de adquisición con objetivos reales</li>
+                                </ul>
+                            </div>
+                            <div class="locked__right" id="cta">
+                                <div class="cta-box">
+                                    <div class="cta-box__title">Agenda tu Diagnóstico Premium</div>
+                                    <p class="muted">
+                                        Te ayudamos a convertir este Radar en ejecución real: ventas, operación y control.
+                                    </p>
+                                    <a class="btn btn--gold btn--lg" id="cta-whatsapp" href="#">
+                                        Agendar por WhatsApp
+                                    </a>
+                                    <button class="btn btn--ghost btn--lg" type="button" id="btn-download" disabled>
+                                        Descargar reporte (PDF)
+                                    </button>
+                                    <div class="muted tiny">PDF se activa en el siguiente paso.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Footer note -->
+            <div class="app-footer muted">
+                <span class="dot"></span>
+                <span>
+                    Tu información no se envía a ningún servidor (modo estático). Todo corre en tu navegador.
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="container">
+            <header class="section__head">
+                <h2>FAQ</h2>
+                <p class="muted">Respuestas claras para que una empresa no se “asuste” y para que se sienta profesional.</p>
+            </header>
+
+            <div class="faq">
+                <details class="faq__item">
+                    <summary>¿Esto reemplaza una consultoría?</summary>
+                    <p>
+                        No. Esto te da claridad y un plan inmediato. Si quieres implementación completa (tablero, embudo, automatizaciones),
+                        ahí entra el diagnóstico premium.
+                    </p>
+                </details>
+
+                <details class="faq__item">
+                    <summary>¿Cuánto tiempo tarda?</summary>
+                    <p>2–4 minutos. La idea es precisión sin fatiga.</p>
+                </details>
+
+                <details class="faq__item">
+                    <summary>¿Sirve si vendo por Instagram y WhatsApp?</summary>
+                    <p>
+                        Sí. El Radar está diseñado para negocios que venden directo (DM/WhatsApp) y para tiendas con checkout formal.
+                    </p>
+                </details>
+
+                <details class="faq__item">
+                    <summary>¿Qué hace “Premium”?</summary>
+                    <p>
+                        Desbloquea plan de 30 días + revisión asistida + recomendaciones ajustadas a tu plataforma (Shopify/Woo/ML/IG).
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__left">
+                <div class="brand brand--small">
+                    <span class="brand__mark" aria-hidden="true">◉</span>
+                    <span class="brand__text">Radar de Ventas Digital<span class="tm">™</span></span>
+                </div>
+                <div class="muted tiny">Tech + premium. Hecho para vender más sin fugas.</div>
+            </div>
+
+            <div class="footer__right">
+                <a href="#inicio">Volver arriba</a>
+                <span class="sep">•</span>
+                <a href="#radar">Iniciar</a>
+                <span class="sep">•</span>
+                <a href="#cta">Premium</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ✅ Chart.js (librería) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Tu app principal (no se toca) -->
+    <script src="js/app.js" defer></script>
+
+    <!-- ✅ Adaptador: crea/actualiza el radar leyendo los scores que ya imprime app.js -->
+    <script defer>
+        (function () {
+            "use strict";
+
+            function n(v) {
+                var x = Number(String(v).replace(/[^\d.-]/g, ""));
+                return Number.isFinite(x) ? x : 0;
+            }
+
+            function getScores() {
+                return [
+                    n(document.getElementById("s-oferta")?.textContent),
+                    n(document.getElementById("s-trafico")?.textContent),
+                    n(document.getElementById("s-conversion")?.textContent),
+                    n(document.getElementById("s-retencion")?.textContent),
+                    n(document.getElementById("s-operacion")?.textContent),
+                    n(document.getElementById("s-metricas")?.textContent),
+                ];
+            }
+
+            var chart = null;
+
+            function buildOrUpdate() {
+                var canvas = document.getElementById("radarChart");
+                if (!canvas || typeof Chart === "undefined") return;
+
+                var dataArr = getScores();
+                // Si todavía no hay números (—), no hacemos nada
+                if (dataArr.every(function (v) { return v === 0; })) return;
+
+                var cfg = {
+                    type: "radar",
+                    data: {
+                        labels: ["Oferta", "Tráfico", "Conversión", "Retención", "Operación", "Métricas"],
+                        datasets: [{
+                            label: "Score por dimensión",
+                            data: dataArr,
+                            fill: true,
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            pointHoverRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { duration: 650 },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                enabled: true,
+                                callbacks: {
+                                    label: function (ctx) { return (ctx.parsed.r || 0) + " / 100"; }
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                min: 0,
+                                max: 100,
+                                ticks: { stepSize: 20, showLabelBackdrop: false },
+                                pointLabels: { font: { size: 12, weight: "700" } }
+                            }
+                        }
+                    }
+                };
+
+                if (chart) {
+                    chart.data.datasets[0].data = dataArr;
+                    chart.update();
+                    return;
+                }
+
+                chart = new Chart(canvas, cfg);
+            }
+
+            function observeScores() {
+                var ids = ["s-oferta", "s-trafico", "s-conversion", "s-retencion", "s-operacion", "s-metricas"];
+                var obs = new MutationObserver(function () { buildOrUpdate(); });
+
+                ids.forEach(function (id) {
+                    var el = document.getElementById(id);
+                    if (el) {
+                        obs.observe(el, { childList: true, characterData: true, subtree: true });
+                    }
+                });
+
+                // Intento inicial (por si ya estaban)
+                setTimeout(buildOrUpdate, 50);
+            }
+
+            document.addEventListener("DOMContentLoaded", observeScores);
+        })();
+    </script>
+    <script defer>
+        (function () {
+            "use strict";
+
+            // 1) Utilidades
+            const $ = (s) => document.querySelector(s);
+
+            function safeText(sel, fallback = "—") {
+                const el = $(sel);
+                const t = el ? (el.textContent || "").trim() : "";
+                return t.length ? t : fallback;
+            }
+
+            function escapeHtml(str) {
+                return String(str)
+                    .replaceAll("&", "&amp;")
+                    .replaceAll("<", "&lt;")
+                    .replaceAll(">", "&gt;")
+                    .replaceAll('"', "&quot;")
+                    .replaceAll("'", "&#039;");
+            }
+
+            function htmlFromPlan(containerSelector) {
+                const el = $(containerSelector);
+                if (!el) return "<div class='muted'>—</div>";
+                // Si tu app.js llena el plan con HTML, lo conservamos.
+                // Si lo llena como texto, igual funciona.
+                return el.innerHTML && el.innerHTML.trim().length ? el.innerHTML : escapeHtml(el.textContent || "—");
+            }
+
+            function collectReportData() {
+                return {
+                    title: "Radar de Ventas Digital™ — Reporte",
+                    date: new Date().toLocaleString("es-CO", { dateStyle: "full", timeStyle: "short" }),
+
+                    scoreTotal: safeText("#score-total"),
+                    scoreLevel: safeText("#score-level"),
+                    flagsCount: safeText("#flags-count"),
+
+                    sOferta: safeText("#s-oferta"),
+                    sTrafico: safeText("#s-trafico"),
+                    sConversion: safeText("#s-conversion"),
+                    sRetencion: safeText("#s-retencion"),
+                    sOperacion: safeText("#s-operacion"),
+                    sMetricas: safeText("#s-metricas"),
+
+                    diagGeneral: safeText("#diag-general"),
+
+                    prio1Title: safeText("#prio-title-1"),
+                    prio1Text: safeText("#prio-text-1"),
+                    prio2Title: safeText("#prio-title-2"),
+                    prio2Text: safeText("#prio-text-2"),
+                    prio3Title: safeText("#prio-title-3"),
+                    prio3Text: safeText("#prio-text-3"),
+
+                    plan7: htmlFromPlan("#plan-7"),
+                    plan15: htmlFromPlan("#plan-15"),
+                };
+            }
+
+            function buildReportHtml(data) {
+                // CSS inline para que el PDF se vea pro incluso sin cargar styles.css
+                const css = `
+          :root{
+            --bg:#0b0c0f; --panel:#11131a; --stroke:rgba(0,0,0,.12);
+            --text:#10131a; --muted:#4b5563; --gold:#c6a85e;
+          }
+          *{ box-sizing:border-box; }
+          body{
+            margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--text);
+            background: #fff;
+          }
+          .wrap{ max-width: 900px; margin: 28px auto; padding: 0 20px; }
+          .top{
+            display:flex; justify-content:space-between; gap:16px; align-items:flex-start;
+            border:1px solid #e5e7eb; border-radius:16px; padding:16px;
+          }
+          .brand{ font-weight:900; font-size:18px; letter-spacing:-.2px; }
+          .meta{ color: var(--muted); font-size:12px; line-height:1.4; text-align:right; }
+          .kpis{
+            margin-top: 14px;
+            display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;
+          }
+          .kpi{
+            border:1px solid #e5e7eb; border-radius:16px; padding:12px;
+          }
+          .kpi .l{ color: var(--muted); font-size:12px; font-weight:700; }
+          .kpi .v{ margin-top:6px; font-size:22px; font-weight:900; }
+          .kpi .h{ margin-top:6px; color: var(--muted); font-size:12px; }
+          h2{
+            margin: 18px 0 10px;
+            font-size: 16px; letter-spacing:-.2px;
+          }
+          .card{
+            border:1px solid #e5e7eb; border-radius:16px; padding:14px;
+            margin-top: 12px;
+          }
+          .muted{ color: var(--muted); }
+          .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+          .scores{
+            display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:10px;
+          }
+          .scoreItem{
+            border:1px solid #e5e7eb; border-radius:14px; padding:10px;
+            display:flex; justify-content:space-between; gap:10px;
+          }
+          .scoreItem b{ font-weight:900; }
+          .prio ol{ margin: 8px 0 0; padding-left: 18px; }
+          .prio li{ margin: 10px 0; }
+          .prio .t{ font-weight:900; }
+          .prio .p{ margin-top:4px; color: var(--muted); line-height:1.5; font-size:13px; }
+          .plan{
+            display:grid; gap:10px;
+          }
+          .plan *{ line-height:1.55; }
+          .footer{
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 11.5px;
+            line-height:1.5;
+          }
+          @media print{
+            .wrap{ margin: 0 auto; }
+            .top, .card, .kpi{ break-inside: avoid; }
+          }
+        `;
+
+                return `
+          <!doctype html>
+          <html lang="es">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>${escapeHtml(data.title)}</title>
+              <style>${css}</style>
+            </head>
+            <body>
+              <div class="wrap">
+                <div class="top">
+                  <div>
+                    <div class="brand">Radar de Ventas Digital™ — Reporte</div>
+                    <div class="muted" style="margin-top:6px;">
+                      Diagnóstico rápido para e-commerce y servicios digitales (agencias / multimedia).
+                    </div>
+                  </div>
+                  <div class="meta">
+                    <div><b>Generado:</b> ${escapeHtml(data.date)}</div>
+                    <div><b>Formato:</b> 1 página (PDF)</div>
+                  </div>
+                </div>
+
+                <div class="kpis">
+                  <div class="kpi">
+                    <div class="l">Score total</div>
+                    <div class="v">${escapeHtml(data.scoreTotal)}</div>
+                    <div class="h">${escapeHtml(data.scoreLevel)}</div>
+                  </div>
+                  <div class="kpi">
+                    <div class="l">Banderas rojas</div>
+                    <div class="v">${escapeHtml(data.flagsCount)}</div>
+                    <div class="h">Penalización inteligente aplicada</div>
+                  </div>
+                  <div class="kpi">
+                    <div class="l">Resumen</div>
+                    <div class="v">Top 3 fugas</div>
+                    <div class="h">Plan 7 y 15 días</div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h2>Lectura general</h2>
+                  <div style="line-height:1.6;">${escapeHtml(data.diagGeneral)}</div>
+                </div>
+
+                <div class="card">
+                  <h2>Scores por dimensión (0–100)</h2>
+                  <div class="scores">
+                    <div class="scoreItem"><span>Oferta</span><b>${escapeHtml(data.sOferta)}</b></div>
+                    <div class="scoreItem"><span>Tráfico</span><b>${escapeHtml(data.sTrafico)}</b></div>
+                    <div class="scoreItem"><span>Conversión</span><b>${escapeHtml(data.sConversion)}</b></div>
+                    <div class="scoreItem"><span>Retención</span><b>${escapeHtml(data.sRetencion)}</b></div>
+                    <div class="scoreItem"><span>Operación</span><b>${escapeHtml(data.sOperacion)}</b></div>
+                    <div class="scoreItem"><span>Métricas</span><b>${escapeHtml(data.sMetricas)}</b></div>
+                  </div>
+                  <div class="footer">Nota: En esta versión PDF se imprime el resumen numérico. El radar visual se queda en la web.</div>
+                </div>
+
+                <div class="card prio">
+                  <h2>Top 3 fugas (prioridades)</h2>
+                  <ol>
+                    <li>
+                      <div class="t">${escapeHtml(data.prio1Title)}</div>
+                      <div class="p">${escapeHtml(data.prio1Text)}</div>
+                    </li>
+                    <li>
+                      <div class="t">${escapeHtml(data.prio2Title)}</div>
+                      <div class="p">${escapeHtml(data.prio2Text)}</div>
+                    </li>
+                    <li>
+                      <div class="t">${escapeHtml(data.prio3Title)}</div>
+                      <div class="p">${escapeHtml(data.prio3Text)}</div>
+                    </li>
+                  </ol>
+                </div>
+
+                <div class="grid2">
+                  <div class="card">
+                    <h2>Plan 7 días</h2>
+                    <div class="plan">${data.plan7}</div>
+                  </div>
+                  <div class="card">
+                    <h2>Plan 15 días</h2>
+                    <div class="plan">${data.plan15}</div>
+                  </div>
+                </div>
+
+                <div class="footer">
+                  Este reporte es generado localmente en tu navegador. No se envía información a servidores.
+                </div>
+              </div>
+
+              <!-- Nota: evitamos inyectar <script> que contenga </script> literal dentro de este script
+                   para no cerrar prematuramente la etiqueta del script padre. El usuario podrá imprimir
+                   manualmente desde la ventana que se abre. -->
+</body>
+</html>
+    `;
+  }
+
+  function openPdfReport(){
+    const results = document.getElementById("results");
+    if(!results || results.hasAttribute("hidden")){
+      alert("Primero calcula el diagnóstico para generar el PDF.");
+      return;
+    }
+
+    const data = collectReportData();
+    const html = buildReportHtml(data);
+
+    const w = window.open("", "_blank");
+    if(!w){
+      alert("Tu navegador bloqueó el popup. Permite popups para generar el PDF.");
+      return;
+    }
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+  }
+
+  function wirePdfButton(){
+    const btn = document.getElementById("btn-download");
+    if(!btn) return;
+
+    // Inicialmente deshabilitado hasta completar las 24 respuestas
+    function isFormComplete(){
+      for(let i=1;i<=24;i++){
+        if(!document.querySelector(`input[name="q${i}"]:checked`)) return false;
+      }
+      return true;
+    }
+
+    function updateBtnState(){
+      btn.disabled = !isFormComplete();
+    }
+
+    updateBtnState();
+
+    // Escucha cambios en respuestas para habilitar cuando esté completo
+    document.querySelectorAll('input[type=radio]').forEach(function(i){
+      i.addEventListener('change', updateBtnState);
+    });
+
+    btn.addEventListener("click", function (e) {
+      if(!isFormComplete()){
+        e.preventDefault();
+        alert('Por favor responde las 24 preguntas antes de descargar el reporte.');
+        return;
+      }
+
+      // Abre el reporte si todo está completo
+      openPdfReport();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", wirePdfButton);
+})();
+</script>
+</body>
+</html>
