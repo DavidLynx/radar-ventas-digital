@@ -1,0 +1,29 @@
+<svg width="1200" height="260" viewBox="0 0 1200 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sales Radar Marketing Intelligence Wordmark</title>
+  <desc id="desc">Transparent premium wordmark for Sales Radar with Marketing Intelligence subtitle.</desc>
+  <defs>
+    <linearGradient id="goldText" x1="240" y1="70" x2="960" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F2D79B"/>
+      <stop offset="0.5" stop-color="#D6B16B"/>
+      <stop offset="1" stop-color="#9B7A3E"/>
+    </linearGradient>
+  </defs>
+
+  <text x="600" y="122" text-anchor="middle"
+        fill="url(#goldText)"
+        font-size="72"
+        font-family="Manrope, Inter, Helvetica, Arial, sans-serif"
+        font-weight="800"
+        letter-spacing="8">
+    SALES RADAR
+  </text>
+
+  <text x="600" y="178" text-anchor="middle"
+        fill="#A98A52"
+        font-size="30"
+        font-family="Manrope, Inter, Helvetica, Arial, sans-serif"
+        font-weight="600"
+        letter-spacing="9">
+    MARKETING INTELLIGENCE
+  </text>
+</svg>
